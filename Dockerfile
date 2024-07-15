@@ -1,4 +1,3 @@
-# Use an official Python runtime as the base image
 FROM python:3.9-slim
 
 # Set the working directory in the container
@@ -22,4 +21,3 @@ COPY . .
 
 # Specify the command to run your application
 CMD ["python", "app.py"]
-

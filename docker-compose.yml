@@ -2,8 +2,7 @@ version: '3'
 services:
   
   backend:
-    build:
-      context: .
+    image: vedant511/two-tier-flaskapp:latest
     ports:
       - "5000:5000"
     environment:
@@ -16,16 +15,14 @@ services:
 
   mysql:
     image: mysql:5.7
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myDb
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
-      - ./message.sql:/docker-entrypoint-initdb.d/message.sql   # Mount sql script into container's /docker-entrypoint-initdb.d directory to get table automatically created
-      - mysql-data:/var/lib/mysql  # Mount the volume for MySQL data storage
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql 
+      - mysql-data:/var/lib/mysql  
 
 volumes:
   mysql-data:
